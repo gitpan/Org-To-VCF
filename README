@@ -3,7 +3,7 @@ NAME
     addressbook)
 
 VERSION
-    version 0.01
+    version 0.02
 
 SYNOPSIS
      use Org::To::VCF qw(org_to_vcf);
@@ -80,6 +80,10 @@ FUNCTIONS
         the text below those headings.
 
         exclude*tags is evaluated after include*tags.
+
+    *   export_notes => *bool* (default: 1)
+
+        Whether to export note fields.
 
     *   include_tags => *array*
 
