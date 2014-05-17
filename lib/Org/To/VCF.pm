@@ -5,7 +5,7 @@ use Log::Any '$log';
 
 use vars qw($VERSION);
 
-use File::Slurp;
+use File::Slurp::Tiny qw(read_file write_file);
 use Org::Document;
 use Org::Dump qw();
 use Scalar::Util qw(blessed);
@@ -20,7 +20,8 @@ has export_notes => (is => 'rw');
 has _vcf => (is => 'rw'); # vcf object
 has _cccode => (is => 'rw'); # country calling code
 
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
+our $DATE = '2014-05-17'; # DATE
 
 require Exporter;
 our @ISA;
@@ -271,17 +272,23 @@ sub _add_vcard {
 
     my ($self, $fields) = @_;
 
+    #$log->tracef("adding vcard");
     my $vc = $self->{_vcf}->add_vcard;
     for my $k (keys %$fields) {
         next if $k =~ /^_/;
         my $v = $fields->{$k};
         if (!ref($v)) {
-            # simple node
+            #$log->tracef("  adding simple vcard node: %s => %s", $k, $v);
             $vc->$k($v);
         } else {
-            # complex node
-            for my $t (keys %$v) {
-                my $node = $vc->add_node({node_type=>$k, types => $t});
+            my @tt = keys %$v;
+            for my $t (@tt) {
+                #$log->tracef("  adding complex vcard node: %s, types=%s", $k, $t);
+                my $node = $vc->add_node({
+                    node_type=>$k,
+                    types => $t, # doesn't work? must use add_types()
+                });
+                $node->add_types($t);
                 $node->value($v->{$t});
             }
         }
@@ -374,7 +381,7 @@ Org::To::VCF - Export contacts in Org document to VCF (vCard addressbook)
 
 =head1 VERSION
 
-version 0.02
+This document describes version 0.03 of Org::To::VCF (from Perl distribution Org-To-VCF), released on 2014-05-17.
 
 =head1 SYNOPSIS
 
@@ -488,7 +495,14 @@ If not specified, VCF output string will be returned instead.
 
 Return value:
 
-Returns an enveloped result (an array). First element (status) is an integer containing HTTP status code (200 means OK, 4xx caller error, 5xx function error). Second element (msg) is a string containing error message, or 'OK' if status is 200. Third element (result) is optional, the actual result. Fourth element (meta) is called result metadata and is optional, a hash that contains extra information.
+Returns an enveloped result (an array).
+
+First element (status) is an integer containing HTTP status code
+(200 means OK, 4xx caller error, 5xx function error). Second element
+(msg) is a string containing error message, or 'OK' if status is
+200. Third element (result) is optional, the actual result. Fourth
+element (meta) is called result metadata and is optional, a hash
+that contains extra information.
 
 =for Pod::Coverage ^(default_country|export|export_.+)$
 
