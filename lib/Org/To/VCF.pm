@@ -20,8 +20,8 @@ has export_notes => (is => 'rw');
 has _vcf => (is => 'rw'); # vcf object
 has _cccode => (is => 'rw'); # country calling code
 
-our $VERSION = '0.03'; # VERSION
-our $DATE = '2014-05-17'; # DATE
+our $VERSION = '0.04'; # VERSION
+our $DATE = '2014-07-22'; # DATE
 
 require Exporter;
 our @ISA;
@@ -381,7 +381,7 @@ Org::To::VCF - Export contacts in Org document to VCF (vCard addressbook)
 
 =head1 VERSION
 
-This document describes version 0.03 of Org::To::VCF (from Perl distribution Org-To-VCF), released on 2014-05-17.
+This document describes version 0.04 of Org::To::VCF (from Perl distribution Org-To-VCF), released on 2014-07-22.
 
 =head1 SYNOPSIS
 
@@ -461,7 +461,7 @@ will be exported. Otherwise, trees that do not carry one of these tags will be
 excluded. If a selected tree is a subtree, the heading hierarchy above it will
 also be selected for export, but not the text below those headings.
 
-excludeI<tags is evaluated after include>tags.
+exclude_tags is evaluated after include_tags.
 
 =item * B<export_notes> => I<bool> (default: 1)
 
@@ -503,6 +503,8 @@ First element (status) is an integer containing HTTP status code
 200. Third element (result) is optional, the actual result. Fourth
 element (meta) is called result metadata and is optional, a hash
 that contains extra information.
+
+ (any)
 
 =for Pod::Coverage ^(default_country|export|export_.+)$
 

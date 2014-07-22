@@ -1,13 +1,13 @@
-#!/usr/bin/perl
+#!perl
 
 use 5.010;
 use strict;
 use warnings;
 
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 
-use Perinci::CmdLine;
-Perinci::CmdLine->new(
+use Perinci::CmdLine::Any;
+Perinci::CmdLine::Any->new(
     url=>'/Org/To/VCF/org_to_vcf')->run;
 
 1;
@@ -26,7 +26,7 @@ org-to-vcf - Export contacts in Org document to vCard addressbook
 
 =head1 VERSION
 
-This document describes version 0.03 of org-to-vcf (from Perl distribution Org-To-VCF), released on 2014-05-17.
+This document describes version 0.04 of org-to-vcf (from Perl distribution Org-To-VCF), released on 2014-07-22.
 
 =head1 HOMEPAGE
 

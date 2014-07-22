@@ -3,8 +3,8 @@ NAME
     addressbook)
 
 VERSION
-    This document describes version 0.03 of Org::To::VCF (from Perl
-    distribution Org-To-VCF), released on 2014-05-17.
+    This document describes version 0.04 of Org::To::VCF (from Perl
+    distribution Org-To-VCF), released on 2014-07-22.
 
 SYNOPSIS
      use Org::To::VCF qw(org_to_vcf);
@@ -80,7 +80,7 @@ FUNCTIONS
         heading hierarchy above it will also be selected for export, but not
         the text below those headings.
 
-        exclude*tags is evaluated after include*tags.
+        exclude_tags is evaluated after include_tags.
 
     *   export_notes => *bool* (default: 1)
 
@@ -121,6 +121,8 @@ FUNCTIONS
     element (result) is optional, the actual result. Fourth element (meta)
     is called result metadata and is optional, a hash that contains extra
     information.
+
+     (any)
 
 TODO
     This is an early release. An important node, addresses (ADR), not parsed
