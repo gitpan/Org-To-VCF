@@ -20,8 +20,8 @@ has export_notes => (is => 'rw');
 has _vcf => (is => 'rw'); # vcf object
 has _cccode => (is => 'rw'); # country calling code
 
-our $VERSION = '0.04'; # VERSION
-our $DATE = '2014-07-22'; # DATE
+our $VERSION = '0.05'; # VERSION
+our $DATE = '2014-07-23'; # DATE
 
 require Exporter;
 our @ISA;
@@ -381,7 +381,7 @@ Org::To::VCF - Export contacts in Org document to VCF (vCard addressbook)
 
 =head1 VERSION
 
-This document describes version 0.04 of Org::To::VCF (from Perl distribution Org-To-VCF), released on 2014-07-22.
+This document describes version 0.05 of Org::To::VCF (from Perl distribution Org-To-VCF), released on 2014-07-23.
 
 =head1 SYNOPSIS
 
