@@ -1,17 +1,22 @@
 #!perl
 
-use 5.010;
+# Note: This script is a CLI interface to Riap function /Org/To/VCF/org_to_vcf
+# and generated automatically using Dist::Zilla::Plugin::Rinci::ScriptFromFunc version 0.01
+
+our $DATE = '2014-08-16'; # DATE
+our $VERSION = '0.06'; # VERSION
+
+use 5.010001;
 use strict;
 use warnings;
 
-our $VERSION = '0.05'; # VERSION
-
 use Perinci::CmdLine::Any;
-Perinci::CmdLine::Any->new(
-    url=>'/Org/To/VCF/org_to_vcf')->run;
 
-1;
-# ABSTRACT: Export contacts in Org document to vCard addressbook
+Perinci::CmdLine::Any->new(
+    url => "/Org/To/VCF/org_to_vcf",
+)->run;
+
+# ABSTRACT: Export contacts in Org document to VCF (vCard addressbook)
 # PODNAME: org-to-vcf
 
 __END__
@@ -22,11 +27,31 @@ __END__
 
 =head1 NAME
 
-org-to-vcf - Export contacts in Org document to vCard addressbook
+org-to-vcf - Export contacts in Org document to VCF (vCard addressbook)
 
 =head1 VERSION
 
-This document describes version 0.05 of org-to-vcf (from Perl distribution Org-To-VCF), released on 2014-07-23.
+This document describes version 0.06 of org-to-vcf (from Perl distribution Org-To-VCF), released on 2014-08-16.
+
+=head1 SYNOPSIS
+
+Usage:
+
+ % org-to-vcf
+
+Examples:
+
+ TODO
+
+To see all options:
+
+ % org-to-vcf --help
+
+=head1 DESCRIPTION
+
+=head1 OPTIONS
+
+ TODO
 
 =head1 HOMEPAGE
 
